@@ -35,7 +35,7 @@ class JsonParser(val tokens : List<JsonToken>) {
                     when (nextToken.token) {
                         JsonToken.TokenType.PreFlower -> this[key] = parseObject()
                         JsonToken.TokenType.PreSquare -> this[key] = parseArray()
-                        in valueToken -> this[key] = currentToken.text.toIntOrNull() ?: currentToken.text
+                        in valueToken -> this[key] = currentToken.text.toLongOrNull() ?: currentToken.text
 
                         else -> throw JsonTokenException(currentIndex, currentToken, "Value of Pair can not be $currentToken")
                     }
